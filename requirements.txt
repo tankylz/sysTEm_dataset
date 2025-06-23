@@ -1,0 +1,26 @@
+# python version was 3.10.15, though any 3.10 version should work
+numpy==1.26.4
+pandas==1.5.3
+bokeh==3.7.3
+pyyaml==6.0.2
+matplotlib==3.10.3
+seaborn==0.13.2
+jupyter==1.1.1
+ipykernel==6.29.5
+scikit-learn==1.5.2
+pymatgen==2024.5.1
+openpyxl==3.1.5
+requests==2.32.3
+bokeh-sampledata==2024.2
+
+
+# commands to install the packages (for macOS)
+# python3.10 -m venv .venv
+# source .venv/bin/activate 
+# pip install -r requirements.txt
+
+# package versions
+# pip freeze > full_dependencies.txt
+
+# run this to check no conflicts
+# pip check

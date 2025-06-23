@@ -1,0 +1,40 @@
+name: sysTEm_localenv
+
+channels:
+  - conda-forge
+
+dependencies:
+  - pip=25.1.1
+  - python=3.10.15
+  - numpy=1.26.4
+  - pandas=1.5.3
+  - openpyxl=3.1.5 # for reading excel files
+  - bokeh=3.7.3
+  - pyyaml=6.0.2
+  - matplotlib=3.10.3
+  - seaborn=0.13.2
+  - jupyter=1.1.1
+  - ipykernel=6.29.5
+  - scikit-learn=1.5.2
+  - pymatgen=2024.5.1
+  - requests=2.32.3
+  - pip:
+        - bokeh-sampledata==2024.2
+
+variables:
+  PIP_DEFAULT_TIMEOUT: 500 
+
+# feel free to replace sysTEm_localenv with your preferred environment name
+
+# commands to run in terminal
+# to install the environment
+# conda env create -n sysTEm_localenv -f environment.yml
+
+# to activate the environment
+# conda activate sysTEm_localenv
+
+# to update the environment
+# conda env update -n sysTEm_localenv -f environment.yml --prune   
+
+# to remove the environment
+# conda remove -n sysTEm_localenv --all
