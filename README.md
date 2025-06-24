@@ -1,7 +1,7 @@
 # Systematically Verified Thermoelectric (`sysTEm`) Dataset 
 
 ## Description
-This repository contains the Systematically Verified Thermoelectric (`sysTEm`) Dataset, which is a compilation of experimental thermoelectric (TE) data, comprising information on the composition, temperature and transport properties. By openly sharing this dataset, we hope to advance informatics research in TE materials, in the hopes of discovering higher performance TE materials.
+This repository contains the Systematically Verified Thermoelectric (`sysTEm`) Dataset, which is a compilation of experimental thermoelectric (TE) data, comprising information on the composition, temperature, and transport properties. By openly sharing this dataset, we hope to advance informatics research in TE materials, in the hopes of discovering higher performance TE materials.
 
 Most of the data were extracted from experimental works using [WebPlotDigitizer](https://automeris.io). Additionally, the `sysTEm` is formed from a merger of previous works, namely an updated version of the Materials Research Laboratory (MRL) dataset ([original work](https://doi.org/10.1021/cm400893e), [the updated dataset](https://doi.org/10.5281/zenodo.15365344)) and the Experimentally Synthesized Thermoelectric Materials (ESTM) dataset ([paper](https://doi.org/10.1038/s41524-022-00897-2
 )).
