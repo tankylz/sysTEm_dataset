@@ -1,5 +1,11 @@
 # Systematically Verified Thermoelectric (`sysTEm`) Dataset 
 
+<p align="center">
+  <img src="figures/system_summary.png" alt="sysTEm dataset summary" width="500"/>
+  <br>
+  <em>Figure 1: Graphical Summary of the dataset).</em>
+</p>
+
 ## Description
 This repository contains the Systematically Verified Thermoelectric (`sysTEm`) Dataset, which is a compilation of experimental thermoelectric (TE) data, comprising information on the composition, temperature, and transport properties. By openly sharing this dataset, we hope to advance informatics research in TE materials, in the hopes of discovering higher performance TE materials.
 
@@ -27,22 +33,22 @@ For the final dataset (`sysTEm_dataset.xlsx`), the following columns are present
 
 | Column Name                                | Data Type | Description                                                                                     |
 |--------------------------------------------|-----------|-------------------------------------------------------------------------------------------------|
-| `#`                                        | int       | Unique identifier assigned to each row in the dataset                                           |
-| `Initial Dataset`                          | string    | Dataset of origin (e.g., This Work, extended MRL, This Work)                                                  |
-| `Source Paper`                             | string    | DOI or hyperlink to the source publication                                                      |
-| `Pymatgen Composition`                     | string    | Composition parsed using `pymatgen.Composition`                                                 |
-| `reduced_compositions`                     | string    | Simplified formula in lowest whole-number ratio (e.g., Sb2Si2Te6 → SiSbTe3)                     |
-| `Pretty Formula`                           | string    | Formula extracted from the source paper, with slight formatting to make the conversion to `pymatgen.Composition` from regex easier                                                |
-| `Type of Formula`                          | string    | Indicates whether the formula is `Stoichiometric` (e.g, Ag2Se) or `Mixed Formula` (e.g, Te + 0.1 wt% InP3)                          |
-| `Year`                                     | int       | Year of publication of the source paper                                                         |
-| `Temperature (K)`                          | float     | Measurement temperature in Kelvin                                                               |
-| `Electrical Conductivity (S/cm)`           | float     | Electrical conductivity σ, in S/cm             |
-| `Seebeck Coefficient (µV/K)`               | float     | Seebeck coefficient S, in µV/K                                                                  |
-| `Power Factor (µW/cmK²)`                   | float     | Power factor PF, in µW/cm·K²                                                    |
-| `zT`                                       | float     | Dimensionless figure of merit                                           |
-| `Total Thermal Conductivity (W/mK)`        | float     | Total thermal conductivity κ = κₑ + κₗ, in W/m·K                                                |
-| `Lattice Thermal Conductivity (W/mK)`      | float     | Lattice contribution to thermal conductivity κₗ, in W/m·K                                       |
-| `Electronic Thermal Conductivity (W/mK)`   | float     | Carrier contribution to thermal conductivity κₑ, in W/m·K                                   |
+| `#`                                        | int       | Unique row identifier in the dataset                                                            |
+| `Initial Dataset`                          | string    | Source of the data point (e.g., This Work, extended MRL or ESTM)                                  |
+| `Source Paper`                             | string    | DOI link or URL to the original publication                                                     |
+| `Pymatgen Composition`                     | string    | Chemical composition as a string, directly convertible to a `pymatgen.Composition` object       |
+| `reduced_compositions`                     | string    | Simplified chemical formula showing the reduced stoichiometric ratio (e.g., Sb₂Si₂Te₆ → SiSbTe₃)|
+| `Pretty Formula`                           | string    | Nominal formula extracted and lightly formatted from the source to support parsing via regex and Pymatgen |
+| `Type of Formula`                          | string    | Indicates whether the `Pretty Formula` is `Stoichiometric` (e.g., Ag₂Se) or a `Mixed Formula` (e.g., Te + 0.1 wt% InP₃) |
+| `Year`                                     | int       | Year in which the source paper was published                                                    |
+| `Temperature (K)`                          | float     | Measurement temperature, in Kelvin                                                              |
+| `Electrical Conductivity (S/cm)`           | float     | Electrical conductivity (σ), in S/cm                                                            |
+| `Seebeck Coefficient (µV/K)`               | float     | Seebeck coefficient (S), in µV/K                                                                |
+| `Power Factor (µW/cmK²)`                   | float     | Power factor (PF), in µW/cm·K²                                               |
+| `zT`                                       | float     | Dimensionless thermoelectric figure of merit                                                    |
+| `Total Thermal Conductivity (W/mK)`        | float     | Total thermal conductivity (κ = κₑ + κₗ), in W/m·K                                              |
+| `Lattice Thermal Conductivity (W/mK)`      | float     | Lattice component of thermal conductivity (κₗ), in W/m·K                                        |
+| `Electronic Thermal Conductivity (W/mK)`   | float     | Electronic component of thermal conductivity (κₑ), in W/m·K                                     |                           |
 
 ## How to use the dataset
 

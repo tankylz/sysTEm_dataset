@@ -8,7 +8,7 @@ k:
   take_log: true
 ke:
   units: W/mk
-  full_name: Carrier Thermal Conductivity
+  full_name: Electronic Thermal Conductivity
   short_name: $\kappa_e$
   column_name: Electronic Thermal Conductivity (W/mK)
   take_log: true
@@ -39,6 +39,6 @@ PF:
 zT:
   units: null
   full_name: Figure of Merit
-  short_name: zT
+  short_name: $zT$
   column_name: zT
   take_log: true
