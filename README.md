@@ -38,7 +38,7 @@ For the final dataset (`sysTEm_dataset.xlsx`), the following columns are present
 | `Source Paper`                             | string    | DOI link or URL to the original publication                                                     |
 | `Pymatgen Composition`                     | string    | Chemical composition as a string, directly convertible to a `pymatgen.Composition` object       |
 | `reduced_compositions`                     | string    | Simplified chemical formula showing the reduced stoichiometric ratio (e.g., Sb₂Si₂Te₆ → SiSbTe₃)|
-| `Pretty Formula`                           | string    | Nominal formula extracted and lightly formatted from the source to support parsing via regex and Pymatgen |
+| `Pretty Formula`                           | string    | Formula extracted and lightly formatted from the source to support parsing via regex and Pymatgen |
 | `Type of Formula`                          | string    | Indicates whether the `Pretty Formula` is `Stoichiometric` (e.g., Ag₂Se) or a `Mixed Formula` (e.g., Te + 0.1 wt% InP₃) |
 | `Year`                                     | int       | Year in which the source paper was published                                                    |
 | `Temperature (K)`                          | float     | Measurement temperature, in Kelvin                                                              |

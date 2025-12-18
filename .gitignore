@@ -1,1 +1,8 @@
 .venv
+.env
+mpcontribs_upload.ipynb
+mpcontribs_example.ipynb
+testing.ipynb
+experimental_thermoelectrics_columns.csv
+.DS_Store
+*.pyc
