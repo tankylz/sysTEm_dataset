@@ -110,35 +110,59 @@ def process_mixed_formula_to_composition(formula):
     # Split based on + or - first. Note - is a hyphen sign, not minus
     chemicals = split_chemicals(formula)
 
+    components_info = []
+    total_specified_wt = 0.0
+    unspecified_indices = []
+
+    wt_pattern = re.compile(r'(\d*\.?\d+)\s*wt\s*%', re.IGNORECASE)
+    wt_token_pattern = re.compile(r'\d*\.?\d+\s*wt\s*%', re.IGNORECASE)
+
     for chem in chemicals:
+        chem = chem.strip()
         # Check if wt% is in the item
-        if 'wt%' in chem:
+        if re.search(r'wt\s*%', chem, flags=re.IGNORECASE):
             # Extract wt% value and the formula
-            wt_match = re.search(r'(\d*\.?\d+)\s*wt%', chem)
-            formula_match = re.search(r'[A-Z][a-z]?\d*\.?\d*(\([\w\d]+\))?[A-Za-z\d]*', chem)
-
-            if wt_match and formula_match:
+            wt_match = wt_pattern.search(chem)
+            if wt_match:
                 wt_percent = float(wt_match.group(1))
-
-                # Extract the chemical formula
-                formula_str = formula_match.group(0)
-                comp = Composition(formula_str)
-                molar_mass = comp.weight
-                mol_fraction = wt_percent / molar_mass
-
-                for element, amount in comp.as_dict().items():
-                    component_dict[element] = component_dict.get(element, 0) + amount * mol_fraction 
+                total_specified_wt += wt_percent
+                formula_str = wt_token_pattern.sub('', chem).strip()
+                if not formula_str:
+                    raise ValueError(f"Unable to extract formula from '{chem}'.")
+                components_info.append({
+                    "formula": formula_str,
+                    "wt": wt_percent
+                })
         else:
-            # take this whole part as 100g or 100wt% of compound 
-            wt_percent =  100
+            components_info.append({
+                "formula": chem,
+                "wt": None
+            })
+            unspecified_indices.append(len(components_info) - 1)
+    
+    if len(unspecified_indices) > 1:
+        raise ValueError("Only one component without an explicit wt% is supported.")
 
-            comp = Composition(chem)
-            molar_mass = comp.weight
+    if total_specified_wt > 100:
+        raise ValueError("Specified wt% values exceed 100%.")
 
-            mol_fraction = wt_percent / molar_mass
+    if unspecified_indices:
+        remainder = 100 - total_specified_wt
+        if remainder < 0:
+            raise ValueError("Specified wt% values exceed 100%.")
+        components_info[unspecified_indices[0]]["wt"] = remainder
 
-            for element, amount in comp.as_dict().items():
-                component_dict[element] = component_dict.get(element, 0) + amount * mol_fraction
+    for component in components_info:
+        wt_percent = component["wt"]
+        if wt_percent is None:
+            raise ValueError("Unable to determine wt% for one or more components.")
+
+        comp = Composition(component["formula"])
+        molar_mass = comp.weight
+        mol_fraction = wt_percent / molar_mass
+
+        for element, amount in comp.as_dict().items():
+            component_dict[element] = component_dict.get(element, 0) + amount * mol_fraction
     
     
     final_comp = Composition(component_dict)
@@ -182,6 +206,9 @@ def convert_to_composition(formula: pd.Series, formula_type: pd.Series, output_n
     # Initialize an empty list to store the results
     compositions = []
     iter = 0
+    percent_pattern = re.compile(r'(\d*\.?\d+)\s*%', re.IGNORECASE)
+    wt_detect_pattern = re.compile(r'wt\s*%', re.IGNORECASE)
+
     # Iterate through each formula and type
     for formula, ftype in zip(formula, formula_type):
         try:
@@ -189,7 +216,10 @@ def convert_to_composition(formula: pd.Series, formula_type: pd.Series, output_n
                 # Direct conversion for stoichiometric formulas
                 try:
                     # converts the percentage to a fraction, if any
-                    formula = re.sub(r'(\d+\.?\d*)%', lambda match: str(utils.convert_percentage_to_fraction(match)), formula)
+                    formula = percent_pattern.sub(
+                        lambda match: str(utils.convert_percentage_to_fraction(match)),
+                        formula
+                    )
 
                     comp = Composition(formula)
                     compositions.append(comp)
@@ -198,7 +228,7 @@ def convert_to_composition(formula: pd.Series, formula_type: pd.Series, output_n
                     print(f"Error converting stoichiometric formula '{formula}', entry {iter} to Composition: {e}")
 
             elif ftype == "Mixed Formula":
-                if 'wt%' in formula:
+                if wt_detect_pattern.search(formula):
                     try:
                         comp = process_mixed_formula_to_composition(formula)
                         compositions.append(comp)

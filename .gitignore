@@ -4,5 +4,8 @@ mpcontribs_upload.ipynb
 mpcontribs_example.ipynb
 testing.ipynb
 experimental_thermoelectrics_columns.csv
+old_files
+Compositions_Manual_Calc.xlsx
+compositions_manual_calc.py
 .DS_Store
 *.pyc

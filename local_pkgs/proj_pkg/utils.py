@@ -71,21 +71,26 @@ def convert_percentage_to_fraction(value):
         number = float(value.group(1))
         return number / 100
     
-    # Handle percentage string with '%'
-    elif isinstance(value, str) and value.endswith('%'):
-        return float(value.strip('%')) / 100
-    
+    percent_pattern = re.compile(r'(\d*\.?\d+)\s*%', re.IGNORECASE)
+
+    # Handle percentage strings (with optional whitespace and varying case)
+    if isinstance(value, str):
+        value = value.strip()
+        percent_match = percent_pattern.search(value)
+        if percent_match:
+            return float(percent_match.group(1)) / 100
+
     # Handle fraction as a string or a numeric value
-    elif isinstance(value, (str, float, int)):
+    if isinstance(value, (str, float, int)):
         try:
             fraction = float(value)
-            if 0 < fraction <= 1:
+            if 0 <= fraction <= 1:
                 return fraction
         except ValueError:
-            raise ValueError("Input must be a percentage string (e.g., '5%'), regex match object with a percentage, or a decimal fraction (e.g., 0.05)")
+            pass
 
     # Raise an error for invalid input types or ranges
-    raise ValueError("Input must be a percentage string (e.g., '5%'), regex match object with a percentage, or a decimal fraction (e.g., 0.05)")
+    raise ValueError("Input must be a percentage (e.g., '5%' or '5 wt%'), regex match object with a percentage, or a decimal fraction between 0 and 1 (e.g., 0.05).")
 
 def composition_to_string(composition, decimal_places=8):
     # Create a dictionary with elements and their amounts
