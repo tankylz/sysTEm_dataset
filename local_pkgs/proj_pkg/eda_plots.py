@@ -1,6 +1,7 @@
 from local_pkgs.proj_pkg.graph_settings import default_color_palette, default_axis_color
 from local_pkgs.proj_pkg.utils import get_text_color
 import matplotlib.pyplot as plt
+from matplotlib.ticker import LogLocator
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -31,8 +32,14 @@ def histogram_plot(target, title, target_name=None, units=None, bins=30, savedir
 
     plt.tick_params(axis='both', which='major', length=12, width=1.2)
     plt.tick_params(axis='both', which='minor', length=8, width=1)
-
-
+    
+    # Enable minor ticks (especially important for log scale)
+    ax = plt.gca()
+    ax.minorticks_on()
+    
+    # For log scale, explicitly set minor tick locator on x-axis
+    if takelog:
+        ax.xaxis.set_minor_locator(LogLocator(subs=np.arange(2, 10)))
 
     # Format x-axis ticks as powers of 10 if takelog is True
     # if takelog:
