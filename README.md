@@ -18,15 +18,28 @@ $$
 zT = \frac{\sigma S^2 T}{\kappa} = \frac{\sigma S^2 T}{\kappa_e + \kappa_l} = \frac{\text{PF}}{\kappa} T
 $$
 
-Aside from materials screening and discovery, `sysTEm` dataset can serve as a benchmarking dataset for models trained on other datasets. Those wishing to extend the TE dataset may also find the code used to validate the data, shared in this repository as well, useful. The full methodology can be found in this paper:
-- [ ] TODO: add link to paper
+Aside from materials screening and discovery, `sysTEm` dataset can serve as a benchmarking dataset for models trained on other datasets. Those wishing to extend the TE dataset may also find the code used to validate the data, shared in this repository as well, useful.
 
+## How to Cite (Currently a Pre-print)
+If this repository has been useful for your work, please consider citing the paper and `GitHub` repo:
 
-## How to Cite
-If this dataset and accompanying code has been useful for your work, please consider citing the paper and `GitHub` repo:
+`Tang LZ, Purdy L, Mohanty T, Ng LWT, Sparks TD. Systematically Verified Experimental Thermoelectric Dataset For Data-driven Approaches. ChemRxiv. 2025; doi:10.26434/chemrxiv-2025-4gxmc`
 
-- [ ] TODO: add citation and bibtex for sysTEm dataset paper and dataset DOI
-
+```
+@misc{Tang_SystematicallyVerifiedExperimental_2025,
+  title = {Systematically {{Verified Experimental Thermoelectric Dataset For Data-driven Approaches}}},
+  author = {Tang, Leng Ze and Purdy, Layla and Mohanty, Trupti and Ng, Leonard W. T. and Sparks, Taylor D.},
+  year = 2025,
+  month = aug,
+  publisher = {ChemRxiv},
+  doi = {10.26434/chemrxiv-2025-4gxmc},
+  url = {https://chemrxiv.org/engage/chemrxiv/article-details/68aeafd3a94eede154d987bd},
+  urldate = {2025-08-31},
+  archiveprefix = {ChemRxiv},
+  langid = {english},
+  keywords = {experimental data,figure of merit,materials informatics,thermoelectric dataset,thermoelectric materials}
+}
+```
 
 ## `sysTEm` Dataset Columns
 For the final dataset (`sysTEm_dataset.xlsx`), the following columns are presented as follows:
