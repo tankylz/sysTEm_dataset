@@ -26,18 +26,18 @@ If this repository has been useful for your work, please consider citing the pap
 `Tang LZ, Purdy L, Mohanty T, Ng LWT, Sparks TD. Systematically Verified Experimental Thermoelectric Dataset For Data-driven Approaches. ChemRxiv. 2025; doi:10.26434/chemrxiv-2025-4gxmc`
 
 ```
-@misc{Tang_SystematicallyVerifiedExperimental_2025,
+@article{Tang_SystematicallyVerifiedExperimental_2026,
   title = {Systematically {{Verified Experimental Thermoelectric Dataset For Data-driven Approaches}}},
   author = {Tang, Leng Ze and Purdy, Layla and Mohanty, Trupti and Ng, Leonard W. T. and Sparks, Taylor D.},
-  year = 2025,
-  month = aug,
-  publisher = {ChemRxiv},
-  doi = {10.26434/chemrxiv-2025-4gxmc},
-  url = {https://chemrxiv.org/engage/chemrxiv/article-details/68aeafd3a94eede154d987bd},
-  urldate = {2025-08-31},
-  archiveprefix = {ChemRxiv},
+  year = 2026,
+  month = mar,
+  journal = {Integrating Materials and Manufacturing Innovation},
+  issn = {2193-9772},
+  doi = {10.1007/s40192-026-00446-5},
+  url = {https://doi.org/10.1007/s40192-026-00446-5},
+  urldate = {2026-03-06},
   langid = {english},
-  keywords = {experimental data,figure of merit,materials informatics,thermoelectric dataset,thermoelectric materials}
+  keywords = {Experimental data,Figure of merit,Materials informatics,Thermoelectric dataset,Thermoelectric materials}
 }
 ```
 
